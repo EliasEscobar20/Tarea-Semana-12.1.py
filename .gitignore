@@ -1,6 +1,7 @@
 #importacion de Tkinter
 # carlos Antonio Nolasco Argueta 
 #Jose Elias Escobar Ortiz
+
 from email.mime import image
 from msilib.schema import RadioButton
 import PIL
@@ -54,9 +55,11 @@ def cargar():
          render2= ImageTk.PhotoImage(reducida)
          label2.configure(image=render2)
          label2.image = render2
+               
+        
 
 
-
+  
 ventana = Tk()
 ventana.geometry("500x500")
 ventana.title("EDITOR DE FOTOS")
