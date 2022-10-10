@@ -1,129 +1,88 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+#importacion de Tkinter
+# carlos Antonio Nolasco Argueta 
+#Jose Elias Escobar Ortiz
+from email.mime import image
+from msilib.schema import RadioButton
+import PIL
+from PIL import Image , ImageTk , ImageFilter , ImageEnhance
+from tkinter import Button, IntVar, Radiobutton, Tk , Label, filedialog
 
-# C extensions
-*.so
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+def cargar():
+        if opcion.get()==1:
+         archivo= filedialog.askopenfilename()
+         foto2= Image.open(archivo)
+         render2=ImageTk.PhotoImage(foto2)
+         reducida = foto2.resize((300,300), Image.Resampling.LANCZOS)
+         render2= ImageTk.PhotoImage(reducida)
+         label2.configure(image=render2)
+         label2.image = render2
+        if opcion.get()==2:
+         archivo= filedialog.askopenfilename()
+         foto2= Image.open(archivo)
+         foto2=foto2.convert("L")
+         render2=ImageTk.PhotoImage(foto2)
+         reducida = foto2.resize((300,300), Image.Resampling.LANCZOS)
+         render2= ImageTk.PhotoImage(reducida)
+         label2.configure(image=render2)
+         label2.image = render2
+        if opcion.get()==3:
+         archivo= filedialog.askopenfilename()
+         foto2= Image.open(archivo)
+         foto2=foto2.filter(ImageFilter.BLUR)
+         render2=ImageTk.PhotoImage(foto2)
+         reducida = foto2.resize((300,300), Image.Resampling.LANCZOS)
+         render2= ImageTk.PhotoImage(reducida)
+         label2.configure(image=render2)
+         label2.image = render2
+        if opcion.get()==4:
+         archivo= filedialog.askopenfilename()
+         foto2= Image.open(archivo)
+         foto2=foto2.filter(ImageFilter.CONTOUR)
+         render2=ImageTk.PhotoImage(foto2)
+         reducida = foto2.resize((300,300), Image.Resampling.LANCZOS)
+         render2= ImageTk.PhotoImage(reducida)
+         label2.configure(image=render2)
+         label2.image = render2
+        if opcion.get()==5:
+         archivo= filedialog.askopenfilename()
+         foto2= Image.open(archivo)
+         foto2=foto2.filter(ImageFilter.SHARPEN)
+         render2=ImageTk.PhotoImage(foto2)
+         reducida = foto2.resize((300,300), Image.Resampling.LANCZOS)
+         render2= ImageTk.PhotoImage(reducida)
+         label2.configure(image=render2)
+         label2.image = render2
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
 
-# Translations
-*.mo
-*.pot
+ventana = Tk()
+ventana.geometry("500x500")
+ventana.title("EDITOR DE FOTOS")
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
 
-# Flask stuff:
-instance/
-.webassets-cache
+opcion = IntVar()
+label2=Label(ventana)
+label3=Label(ventana)
+label4=Label(ventana, text="Selecciona una opción y luego carga la imagen:"  ,bg="pink")
 
-# Scrapy stuff:
-.scrapy
+boton2=Button(ventana,text="Cargar foto" ,bg="pink", command=cargar)
+radio1=Radiobutton(ventana, text="Normal", value=1, variable=opcion )
+radio2=Radiobutton(ventana, text="Blanco/negro", value=2, variable=opcion )
+radio3=Radiobutton(ventana, text="Desenfocar", value=3, variable=opcion )
+radio4=Radiobutton(ventana, text="Contorno", value=4, variable=opcion )
+radio5=Radiobutton(ventana, text="Contraste", value=5, variable=opcion )
 
-# Sphinx documentation
-docs/_build/
 
-# PyBuilder
-target/
+label2.place(x=10,y=40)
+label3.place(x=10,y=40)
+boton2.place(x=400,y=100)
+radio1.place(y=400)
+radio2.place(x=70,y=400)
+radio3.place(x=160,y=400)
+radio4.place(x=250,y=400)
+radio5.place(x=330,y=400)
+label4.place(x=5 , y=380)
 
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-.python-version
-
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
+ventana.mainloop()
